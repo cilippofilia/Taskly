@@ -13,7 +13,7 @@ extension Task {
     }
     
     var taskTitle: String {
-        title ?? "New Task"
+        title ?? NSLocalizedString("New Task", comment: "Create a new task")
     }
     
     var taskDetail: String {
