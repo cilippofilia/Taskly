@@ -5,7 +5,7 @@
 //  Created by Filippo Cilia on 31/03/2021.
 //
 
-import Foundation
+import SwiftUI
 
 extension Project {
     static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
@@ -42,6 +42,10 @@ extension Project {
             
             return first.taskCreationDate < second.taskCreationDate
         }
+    }
+    
+    var label: LocalizedStringKey {
+        LocalizedStringKey("\(projectTitle), \(projectTasks.count) tasks, \(completionAmount * 100, specifier: "%g")% complete.")
     }
     
     var projectTasks: [Task] {

@@ -28,71 +28,69 @@ struct ProjectsView: View {
                                          predicate: NSPredicate(format: "closed = %d", showClosedProjects))
     }
     
+    var projectList: some View {
+        List {
+            ForEach(projects.wrappedValue) { project in
+                Section(header: ProjectHeaderView(project: project)) {
+                    ForEach(project.projectTasks(using: sortOrder)) { task in
+                        TaskRowView(project: project, task: task)
+                    }
+                    .onDelete { offsets in
+                        delete(offsets, from: project)
+                    }
+                    
+                    if showClosedProjects == false {
+                        Button {
+                            addTask(to: project)
+                        } label: {
+                            Label("Add New Task", systemImage: "plus")
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(InsetGroupedListStyle())
+    }
+    
+    var addProjectToolbarItem: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if showClosedProjects == false {
+                Button {
+                    addProject()
+                } label: {
+                    if UIAccessibility.isVoiceOverRunning {
+                        Text("Add Project")
+                    } else {
+                        Label("Add Project", systemImage: "plus")
+                    }
+                }
+            }
+        }
+    }
+
+    var sortOrderToolbarItem: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+                showingSortOrder.toggle()
+            } label: {
+                Label("Sort", systemImage: "arrow.up.arrow.down")
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             Group {
                 if projects.wrappedValue.isEmpty {
                     Text("There's nothing here right now.")
                 } else {
-                    List {
-                        ForEach(projects.wrappedValue) { project in
-                            Section(header: ProjectHeaderView(project: project)) {
-                                ForEach(project.projectTasks(using: sortOrder)) { task in
-                                    TaskRowView(project: project, task: task)
-                                }
-                                .onDelete { offsets in
-                                    let allTasks = project.projectTasks(using: sortOrder)
-                                    
-                                    for offset in offsets {
-                                        let task = allTasks[offset]
-                                        dataController.delete(task)
-                                    }
-                                    
-                                    dataController.save()
-                                }
-                                
-                                if showClosedProjects == false {
-                                    Button {
-                                        withAnimation {
-                                            let task = Task(context: managedObjectContext)
-                                            task.project = project
-                                            task.creationDate = Date()
-                                            dataController.save()
-                                        }
-                                    } label: {
-                                        Label("Add New Task", systemImage: "plus")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .listStyle(InsetGroupedListStyle())
+                    projectList
                 }
             }
             .navigationTitle(showClosedProjects ? "Closed Projects" : "Open Projects")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if showClosedProjects == false {
-                        Button {
-                            withAnimation {
-                                let project = Project(context: managedObjectContext)
-                                project.closed = false
-                                project.creationDate = Date()
-                                dataController.save()
-                            }
-                        } label: {
-                            Label("Add Project", systemImage: "plus")
-                        }
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        showingSortOrder.toggle()
-                    } label: {
-                        Label("Sort", systemImage: "arrow.up.arrow.down")
-                    }
-                }
+                addProjectToolbarItem
+                sortOrderToolbarItem
             }
             .actionSheet(isPresented: $showingSortOrder) {
                 ActionSheet(title: Text("Sort tasks"),
@@ -107,6 +105,35 @@ struct ProjectsView: View {
             
             SelectSomethingView()
         }
+    }
+        
+    func addProject() {
+        withAnimation {
+            let project = Project(context: managedObjectContext)
+            project.closed = false
+            project.creationDate = Date()
+            dataController.save()
+        }
+    }
+    
+    func addTask(to project: Project) {
+        withAnimation {
+            let task = Task(context: managedObjectContext)
+            task.project = project
+            task.creationDate = Date()
+            dataController.save()
+        }
+    }
+    
+    func delete(_ offsets: IndexSet, from project: Project) {
+        let allTasks = project.projectTasks(using: sortOrder)
+        
+        for offset in offsets {
+            let task = allTasks[offset]
+            dataController.delete(task)
+        }
+        
+        dataController.save()
     }
 }
 
