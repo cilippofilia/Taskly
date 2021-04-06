@@ -9,9 +9,9 @@ import SwiftUI
 
 struct EditTaskView: View {
     let task: Task
-    
+
     @EnvironmentObject var dataController: DataController
-    
+
     @State private var title: String
     @State private var detail: String
     @State private var priority: Int
@@ -49,10 +49,10 @@ struct EditTaskView: View {
         .navigationTitle("Edit Task")
         .onDisappear(perform: dataController.save)
     }
-    
+
     func update() {
         task.project?.objectWillChange.send()
-        
+
         task.title = title
         task.detail = detail
         task.priority = Int16(priority)

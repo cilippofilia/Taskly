@@ -11,11 +11,11 @@ extension Task {
     enum SortOrder {
         case optimized, title, creationDate
     }
-    
+
     var taskTitle: String {
         title ?? NSLocalizedString("New Task", comment: "Create a new task")
     }
-    
+
     var taskDetail: String {
         detail ?? ""
     }
@@ -23,17 +23,17 @@ extension Task {
     var taskCreationDate: Date {
         creationDate ?? Date()
     }
-    
+
     static var example: Task {
         let controller = DataController(inMemory: true)
         let viewContext = controller.container.viewContext
-        
+
         let task = Task(context: viewContext)
         task.title = "Example task"
         task.detail = "This is an example task"
         task.priority = 3
         task.creationDate = Date()
-        
+
         return task
     }
 }

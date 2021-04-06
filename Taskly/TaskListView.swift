@@ -10,7 +10,7 @@ import SwiftUI
 struct TaskListView: View {
     let title: LocalizedStringKey
     let tasks: FetchedResults<Task>.SubSequence
-    
+
     var body: some View {
         if tasks.isEmpty {
             EmptyView()
@@ -49,8 +49,8 @@ struct TaskListView: View {
     }
 }
 
-//struct TaskListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TaskListView(title: "example", tasks: Task.example)
-//    }
-//}
+//  struct TaskListView_Previews: PreviewProvider {
+//      static var previews: some View {
+//          TaskListView(title: "example", tasks: Task.example)
+//      }
+//  }

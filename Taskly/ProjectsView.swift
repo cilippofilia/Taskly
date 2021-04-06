@@ -10,24 +10,29 @@ import SwiftUI
 struct ProjectsView: View {
     static let openTag: String? = "Open"
     static let closedTag: String? = "Closed"
-    
+
     @EnvironmentObject var dataController: DataController
     @Environment(\.managedObjectContext) var managedObjectContext
-    
+
     @State private var showingSortOrder = false
     @State private var sortOrder = Task.SortOrder.optimized
-    
+
     let showClosedProjects: Bool
     let projects: FetchRequest<Project>
-    
+
     init(showClosedProjects: Bool) {
         self.showClosedProjects = showClosedProjects
-        
+
         projects = FetchRequest<Project>(entity: Project.entity(),
-                                         sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: false)],
+                                         sortDescriptors: [
+                                            NSSortDescriptor(
+                                                keyPath: \Project.creationDate,
+                                                ascending: false
+                                            )
+                                         ],
                                          predicate: NSPredicate(format: "closed = %d", showClosedProjects))
     }
-    
+
     var projectList: some View {
         List {
             ForEach(projects.wrappedValue) { project in
@@ -38,7 +43,7 @@ struct ProjectsView: View {
                     .onDelete { offsets in
                         delete(offsets, from: project)
                     }
-                    
+
                     if showClosedProjects == false {
                         Button {
                             addTask(to: project)
@@ -51,7 +56,7 @@ struct ProjectsView: View {
         }
         .listStyle(InsetGroupedListStyle())
     }
-    
+
     var addProjectToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             if showClosedProjects == false {
@@ -77,7 +82,7 @@ struct ProjectsView: View {
             }
         }
     }
-    
+
     var body: some View {
         NavigationView {
             Group {
@@ -102,11 +107,11 @@ struct ProjectsView: View {
                                 .cancel()
                             ])
             }
-            
+
             SelectSomethingView()
         }
     }
-        
+
     func addProject() {
         withAnimation {
             let project = Project(context: managedObjectContext)
@@ -115,7 +120,7 @@ struct ProjectsView: View {
             dataController.save()
         }
     }
-    
+
     func addTask(to project: Project) {
         withAnimation {
             let task = Task(context: managedObjectContext)
@@ -124,15 +129,15 @@ struct ProjectsView: View {
             dataController.save()
         }
     }
-    
+
     func delete(_ offsets: IndexSet, from project: Project) {
         let allTasks = project.projectTasks(using: sortOrder)
-        
+
         for offset in offsets {
             let task = allTasks[offset]
             dataController.delete(task)
         }
-        
+
         dataController.save()
     }
 }

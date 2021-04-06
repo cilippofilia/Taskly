@@ -10,22 +10,28 @@ import CoreData
 
 struct HomeView: View {
     static let homeTag: String? = "Home"
-    
+
     @EnvironmentObject var dataController: DataController
     @FetchRequest(entity: Project.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \Project.title, ascending: true)],
-                  predicate: NSPredicate(format: "closed = false")) var projects: FetchedResults<Project>
+                  predicate: NSPredicate(format: "closed = false")
+    ) var projects: FetchedResults<Project>
 
     let tasks: FetchRequest<Task>
-    
+
     init() {
         let request: NSFetchRequest<Task> = Task.fetchRequest()
-        request.predicate = NSPredicate(format: "completed = false")
+
+        let completedPredicate = NSPredicate(format: "completed = false")
+        let openPredicate = NSPredicate(format: "project.closed = false")
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
+
+        request.predicate = compoundPredicate
 
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Task.priority, ascending: false)
         ]
-        
+
         request.fetchLimit = 10
         tasks = FetchRequest(fetchRequest: request)
     }
@@ -56,8 +62,14 @@ struct HomeView: View {
             }
             .background(Color.systemGroupedBackground.ignoresSafeArea())
             .navigationTitle("Home")
+            .toolbar {
+                Button("Add Data") {
+                    dataController.deleteAll()
+                    try? dataController.createSampleData()
+                }
+            }
         }
-    }    
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {

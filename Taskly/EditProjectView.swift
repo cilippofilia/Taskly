@@ -9,10 +9,10 @@ import SwiftUI
 
 struct EditProjectView: View {
     let project: Project
-    
+
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var dataController: DataController
-    
+
     @State private var showingDeleteConfirm = false
 
     @State private var title: String
@@ -30,14 +30,14 @@ struct EditProjectView: View {
         _detail = State(wrappedValue: project.projectDetail)
         _color = State(wrappedValue: project.projectColor)
     }
-    
+
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
                 TextField("Project name", text: $title.onChange(update))
                 TextField("Description of this project", text: $detail.onChange(update))
             }
-            
+
             Section(header: Text("Custom project color")) {
                 LazyVGrid(columns: colorColumns) {
                     ForEach(Project.colors, id: \.self) { item in
@@ -47,6 +47,7 @@ struct EditProjectView: View {
                 .padding(.vertical)
             }
 
+            // swiftlint:disable:next line_length
             Section(footer: Text("Closing a project moves it from the Open to Closed tab; deleting it removes the project completely.")) {
                 Button(project.closed ? "Reopen this project" : "Close this project") {
                     project.closed.toggle()
@@ -63,15 +64,15 @@ struct EditProjectView: View {
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirm) {
             Alert(title: Text("Delete project?"),
-                  message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."),
+                  message: Text("Are you sure you want to delete this project? You will also delete all the items it contains."), // swiftlint:disable:this line_length
                   primaryButton: .default(Text("Delete"), action: delete),
                   secondaryButton: .cancel())
         }
     }
-    
+
     func update() {
         project.objectWillChange.send()
-        
+
         project.title = title
         project.detail = detail
         project.color = color
@@ -81,7 +82,7 @@ struct EditProjectView: View {
         dataController.delete(project)
         presentationMode.wrappedValue.dismiss()
     }
-    
+
     func colorButton(for item: String) -> some View {
         ZStack {
             Color(item)

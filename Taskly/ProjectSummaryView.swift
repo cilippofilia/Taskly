@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ProjectSummaryView: View {
     @ObservedObject var project: Project
-    
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(project.projectTasks.count) items")
+            Text("\(project.projectTasks.count) tasks")
                 .font(.caption)
                 .foregroundColor(.secondary)
 
@@ -28,7 +28,6 @@ struct ProjectSummaryView: View {
         .shadow(color: Color.black.opacity(0.2), radius: 5)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(project.label)
-
     }
 }
 

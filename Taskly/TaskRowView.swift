@@ -15,17 +15,17 @@ struct TaskRowView: View {
         if task.completed {
             return Image(systemName: "checkmark.circle")
                 .foregroundColor(Color(project.projectColor))
-            
+
         } else if task.priority == 3 {
             return Image(systemName: "exclamationmark.triangle")
                 .foregroundColor(Color(project.projectColor))
-            
+
         } else {
             return Image(systemName: "checkmark.circle")
                 .foregroundColor(.clear)
         }
     }
-    
+
     var label: Text {
         if task.completed {
             return Text("\(task.taskTitle), completed.")
