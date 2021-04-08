@@ -49,6 +49,16 @@
                ReferencedContainer = "container:Taskly.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "18C5BAD0261EE9D100E4749B"
+               BuildableName = "TasklyUITests.xctest"
+               BlueprintName = "TasklyUITests"
+               ReferencedContainer = "container:Taskly.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

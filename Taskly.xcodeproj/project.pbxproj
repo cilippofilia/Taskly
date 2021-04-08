@@ -40,6 +40,8 @@
 		18A6955D261DE890007F8FB4 /* DecodableString.json in Resources */ = {isa = PBXBuildFile; fileRef = 18A6955C261DE890007F8FB4 /* DecodableString.json */; };
 		18A85882261D009500C16F22 /* TasklyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A85881261D009500C16F22 /* TasklyTests.swift */; };
 		18A8588C261D01F600C16F22 /* AssetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8588B261D01F600C16F22 /* AssetTest.swift */; };
+		18C5BAC6261EE5CC00E4749B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BAC5261EE5CC00E4749B /* PerformanceTests.swift */; };
+		18C5BAD4261EE9D100E4749B /* TasklyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BAD3261EE9D100E4749B /* TasklyUITests.swift */; };
 		18E46414261B1C9C0064E111 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E46413261B1C9C0064E111 /* TaskListView.swift */; };
 		18E46417261B1D660064E111 /* ProjectSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E46416261B1D660064E111 /* ProjectSummaryView.swift */; };
 		18F36CA6261DC176007BFE03 /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F36CA5261DC176007BFE03 /* ProjectTests.swift */; };
@@ -47,6 +49,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		18A85884261D009500C16F22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1876088D26147508006F67CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1876089426147508006F67CD;
+			remoteInfo = Taskly;
+		};
+		18C5BAD6261EE9D100E4749B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1876088D26147508006F67CD /* Project object */;
 			proxyType = 1;
@@ -97,6 +106,10 @@
 		18A85881261D009500C16F22 /* TasklyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasklyTests.swift; sourceTree = "<group>"; };
 		18A85883261D009500C16F22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18A8588B261D01F600C16F22 /* AssetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTest.swift; sourceTree = "<group>"; };
+		18C5BAC5261EE5CC00E4749B /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		18C5BAD1261EE9D100E4749B /* TasklyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TasklyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18C5BAD3261EE9D100E4749B /* TasklyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasklyUITests.swift; sourceTree = "<group>"; };
+		18C5BAD5261EE9D100E4749B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18E46413261B1C9C0064E111 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		18E46416261B1D660064E111 /* ProjectSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSummaryView.swift; sourceTree = "<group>"; };
 		18F36CA5261DC176007BFE03 /* ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
@@ -118,6 +131,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18C5BACE261EE9D100E4749B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -126,6 +146,7 @@
 			children = (
 				1876089726147508006F67CD /* Taskly */,
 				18A85880261D009500C16F22 /* TasklyTests */,
+				18C5BAD2261EE9D100E4749B /* TasklyUITests */,
 				1876089626147508006F67CD /* Products */,
 				187608C72614882B006F67CD /* Frameworks */,
 			);
@@ -136,6 +157,7 @@
 			children = (
 				1876089526147508006F67CD /* Taskly.app */,
 				18A8587F261D009500C16F22 /* TasklyTests.xctest */,
+				18C5BAD1261EE9D100E4749B /* TasklyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,11 +287,21 @@
 				18A6953F261DC469007F8FB4 /* AwardTests.swift */,
 				18A69543261DDA96007F8FB4 /* DevelopmentTests.swift */,
 				18A69551261DE2E5007F8FB4 /* ExtensionTests.swift */,
+				18C5BAC5261EE5CC00E4749B /* PerformanceTests.swift */,
 				18F36CA5261DC176007BFE03 /* ProjectTests.swift */,
 				18A85881261D009500C16F22 /* TasklyTests.swift */,
 				18A85883261D009500C16F22 /* Info.plist */,
 			);
 			path = TasklyTests;
+			sourceTree = "<group>";
+		};
+		18C5BAD2261EE9D100E4749B /* TasklyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				18C5BAD3261EE9D100E4749B /* TasklyUITests.swift */,
+				18C5BAD5261EE9D100E4749B /* Info.plist */,
+			);
+			path = TasklyUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +343,24 @@
 			productReference = 18A8587F261D009500C16F22 /* TasklyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		18C5BAD0261EE9D100E4749B /* TasklyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18C5BAD8261EE9D100E4749B /* Build configuration list for PBXNativeTarget "TasklyUITests" */;
+			buildPhases = (
+				18C5BACD261EE9D100E4749B /* Sources */,
+				18C5BACE261EE9D100E4749B /* Frameworks */,
+				18C5BACF261EE9D100E4749B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18C5BAD7261EE9D100E4749B /* PBXTargetDependency */,
+			);
+			name = TasklyUITests;
+			productName = TasklyUITests;
+			productReference = 18C5BAD1261EE9D100E4749B /* TasklyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -324,6 +374,10 @@
 						CreatedOnToolsVersion = 12.4;
 					};
 					18A8587E261D009500C16F22 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 1876089426147508006F67CD;
+					};
+					18C5BAD0261EE9D100E4749B = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 1876089426147508006F67CD;
 					};
@@ -345,6 +399,7 @@
 			targets = (
 				1876089426147508006F67CD /* Taskly */,
 				18A8587E261D009500C16F22 /* TasklyTests */,
+				18C5BAD0261EE9D100E4749B /* TasklyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -369,6 +424,13 @@
 			files = (
 				18A6955D261DE890007F8FB4 /* DecodableString.json in Resources */,
 				18A69557261DE869007F8FB4 /* DecodableDictionary.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18C5BACF261EE9D100E4749B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,12 +490,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C5BAC6261EE5CC00E4749B /* PerformanceTests.swift in Sources */,
 				18A8588C261D01F600C16F22 /* AssetTest.swift in Sources */,
 				18A69540261DC469007F8FB4 /* AwardTests.swift in Sources */,
 				18A85882261D009500C16F22 /* TasklyTests.swift in Sources */,
 				18A69552261DE2E5007F8FB4 /* ExtensionTests.swift in Sources */,
 				18F36CA6261DC176007BFE03 /* ProjectTests.swift in Sources */,
 				18A69544261DDA96007F8FB4 /* DevelopmentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18C5BACD261EE9D100E4749B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18C5BAD4261EE9D100E4749B /* TasklyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +515,11 @@
 			isa = PBXTargetDependency;
 			target = 1876089426147508006F67CD /* Taskly */;
 			targetProxy = 18A85884261D009500C16F22 /* PBXContainerItemProxy */;
+		};
+		18C5BAD7261EE9D100E4749B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1876089426147508006F67CD /* Taskly */;
+			targetProxy = 18C5BAD6261EE9D100E4749B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -682,6 +758,44 @@
 			};
 			name = Release;
 		};
+		18C5BAD9261EE9D100E4749B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C2BGSZL929;
+				INFOPLIST_FILE = TasklyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.cilia.filippo.TasklyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Taskly;
+			};
+			name = Debug;
+		};
+		18C5BADA261EE9D100E4749B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C2BGSZL929;
+				INFOPLIST_FILE = TasklyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.cilia.filippo.TasklyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Taskly;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -708,6 +822,15 @@
 			buildConfigurations = (
 				18A85887261D009500C16F22 /* Debug */,
 				18A85888261D009500C16F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18C5BAD8261EE9D100E4749B /* Build configuration list for PBXNativeTarget "TasklyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18C5BAD9261EE9D100E4749B /* Debug */,
+				18C5BADA261EE9D100E4749B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
