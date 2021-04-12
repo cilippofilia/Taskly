@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditProjectView: View {
-    let project: Project
+    @ObservedObject var project: Project
 
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var dataController: DataController

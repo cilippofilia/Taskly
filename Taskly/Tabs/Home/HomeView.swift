@@ -5,40 +5,22 @@
 //  Created by Filippo Cilia on 31/03/2021.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct HomeView: View {
     static let homeTag: String? = "Home"
 
-    @EnvironmentObject var dataController: DataController
-    @FetchRequest(entity: Project.entity(),
-                  sortDescriptors: [NSSortDescriptor(keyPath: \Project.title, ascending: true)],
-                  predicate: NSPredicate(format: "closed = false")
-    ) var projects: FetchedResults<Project>
-
-    let tasks: FetchRequest<Task>
-
-    // Construct a fetch request to show the 10 highest-priority, incomplete items from open projects.
-    init() {
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
-
-        let completedPredicate = NSPredicate(format: "completed = false")
-        let openPredicate = NSPredicate(format: "project.closed = false")
-        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
-
-        request.predicate = compoundPredicate
-
-        request.sortDescriptors = [
-            NSSortDescriptor(keyPath: \Task.priority, ascending: false)
-        ]
-
-        request.fetchLimit = 10
-        tasks = FetchRequest(fetchRequest: request)
-    }
+    @StateObject var viewModel: ViewModel
 
     var projectRows: [GridItem] {
         [GridItem(.fixed(100))]
+    }
+
+    // Construct a fetch request to show the 10 highest-priority, incomplete items from open projects.
+    init(dataController: DataController) {
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var body: some View {
@@ -47,7 +29,7 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: projectRows) {
-                            ForEach(projects) { project in
+                            ForEach(viewModel.projects) { project in
                                 ProjectSummaryView(project: project)
                             }
                         }
@@ -55,8 +37,8 @@ struct HomeView: View {
                         .fixedSize(horizontal: false, vertical: true)
                     }
                     VStack(alignment: .leading) {
-                        TaskListView(title: "Up next", tasks: tasks.wrappedValue.prefix(3))
-                        TaskListView(title: "More to explore", tasks: tasks.wrappedValue.dropFirst(3))
+                        TaskListView(title: "Up next", tasks: viewModel.upNext)
+                        TaskListView(title: "More to explore", tasks: viewModel.moreToExplore)
                     }
                     .padding(.horizontal)
                 }
@@ -64,10 +46,7 @@ struct HomeView: View {
             .background(Color.systemGroupedBackground.ignoresSafeArea())
             .navigationTitle("Home")
             .toolbar {
-                Button("Add Data") {
-                    dataController.deleteAll()
-                    try? dataController.createSampleData()
-                }
+                Button("Add Data", action: viewModel.addSampleData)
             }
         }
     }
@@ -75,6 +54,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(dataController: DataController.preview)
     }
 }
