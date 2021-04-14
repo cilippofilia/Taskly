@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import CoreSpotlight
 import SwiftUI
 
 struct HomeView: View {
@@ -26,6 +27,15 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                if let task = viewModel.selectedTask {
+                    NavigationLink(
+                        destination: EditTaskView(task: task),
+                        tag: task,
+                        selection: $viewModel.selectedTask,
+                        label: EmptyView.init
+                    )
+                    .id(task)
+                }
                 VStack(alignment: .leading) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: projectRows) {
@@ -48,6 +58,13 @@ struct HomeView: View {
             .toolbar {
                 Button("Add Data", action: viewModel.addSampleData)
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightTask)
+        }
+    }
+
+    func loadSpotlightTask(_ userActivity: NSUserActivity) {
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            viewModel.selectTask(with: uniqueIdentifier)
         }
     }
 }

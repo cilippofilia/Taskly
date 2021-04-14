@@ -15,6 +15,7 @@ extension HomeView {
 
         @Published var projects = [Project]()
         @Published var tasks = [Task]()
+        @Published var selectedTask: Task?
 
         var dataController: DataController
 
@@ -90,6 +91,10 @@ extension HomeView {
         func addSampleData() {
             dataController.deleteAll()
             try? dataController.createSampleData()
+        }
+
+        func selectTask(with identifier: String) {
+            selectedTask = dataController.task(with: identifier)
         }
     }
 }
