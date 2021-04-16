@@ -110,3 +110,10 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
+
+
+// 1-   In UnlockManager, don’t just hard-code a single product ID – either put several in there, or for added flexibility fetch the data from a remote server. This allows you to enable or disable purchases remotely.
+// 2- Modify the loaded request state to store an array of products.
+// 3- Update your UI to show a list of products, rather than a single, hard-coded button. This would mean using the localized title of your products alongside the localized price.
+// 4- Inside the updatedTransactions method, check the transaction.payment.productIdentifier property to see what they actually bought.
+// 5- Store the product ID of each purchased item, either using UserDefaults or the iOS keychain for extra security, then adjust your app’s settings at launch by reading the array of purchased IDs.
