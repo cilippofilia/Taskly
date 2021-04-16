@@ -35,7 +35,7 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
         // Store the data controller we were sent.
         self.dataController = dataController
         // Prepare to look for our unlock product.
-        let productIDs = Set(["com.hackingwithswift.UltimatePortfolioWorking.unlock"])
+        let productIDs = Set(["me.cilia.filippo.Taskly.unlock"])
         request = SKProductsRequest(productIdentifiers: productIDs)
         // This is required because we inherit from NSObject.
         super.init()
@@ -51,6 +51,26 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
 
     deinit {
         SKPaymentQueue.default().remove(self)
+    }
+
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        DispatchQueue.main.async {
+            // Store the returned products for later, if we need them.
+            self.loadedProducts = response.products
+
+            guard let unlock = self.loadedProducts.first else {
+                self.requestState = .failed(StoreError.missingProduct)
+                return
+            }
+
+            if response.invalidProductIdentifiers.isEmpty == false {
+                print("ALERT: Received invalid product identifiers: \(response.invalidProductIdentifiers)")
+                self.requestState = .failed(StoreError.invalidIdentifiers)
+                return
+            }
+
+            self.requestState = .loaded(unlock)
+        }
     }
 
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -78,26 +98,6 @@ class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, S
                     break
                 }
             }
-        }
-    }
-
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        DispatchQueue.main.async {
-            // Store the returned products for later, if we need them.
-            self.loadedProducts = response.products
-
-            guard let unlock = self.loadedProducts.first else {
-                self.requestState = .failed(StoreError.missingProduct)
-                return
-            }
-
-            if response.invalidProductIdentifiers.isEmpty == false {
-                print("ALERT: Received invalid product identifiers: \(response.invalidProductIdentifiers)")
-                self.requestState = .failed(StoreError.invalidIdentifiers)
-                return
-            }
-
-            self.requestState = .loaded(unlock)
         }
     }
 
