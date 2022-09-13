@@ -58,7 +58,7 @@ extension Project {
     }
 
     var label: LocalizedStringKey {
-        LocalizedStringKey("\(projectTitle), \(projectTasks.count) tasks, \(completionAmount * 100, specifier: "%g")% complete.") // swiftlint:disable:this line_length
+        LocalizedStringKey("\(projectTitle), \(projectTasks.count) tasks, \(completionAmount * 100, specifier: "%g")% complete.") 
     }
 
     var projectTasks: [Task] {

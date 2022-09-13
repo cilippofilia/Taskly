@@ -79,7 +79,6 @@ struct EditProjectView: View {
                 }
             }
 
-            // swiftlint:disable:next line_length
             Section(footer: Text("Closing a project moves it from the Open to Closed tab; deleting it removes the project entirely.")) {
                 Button(project.closed ? "Reopen this project" : "Close this project") {
                     project.closed.toggle()
@@ -98,7 +97,7 @@ struct EditProjectView: View {
         .onDisappear(perform: dataController.save)
         .alert(isPresented: $showingDeleteConfirm) {
             Alert(title: Text("Delete project?"),
-                  message: Text("Are you sure you want to delete this project? You will also delete all the tasks it contains."), // swiftlint:disable:this line_length
+                  message: Text("Are you sure you want to delete this project? You will also delete all the tasks it contains."),
                   primaryButton: .default(Text("Delete"), action: delete),
                   secondaryButton: .cancel())
         }
