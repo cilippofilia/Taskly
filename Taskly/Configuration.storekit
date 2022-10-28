@@ -1,4 +1,8 @@
 {
+  "identifier" : "FDD8302B",
+  "nonRenewingSubscriptions" : [
+
+  ],
   "products" : [
     {
       "displayPrice" : "2.99",
@@ -23,7 +27,7 @@
 
   ],
   "version" : {
-    "major" : 1,
+    "major" : 2,
     "minor" : 0
   }
 }
