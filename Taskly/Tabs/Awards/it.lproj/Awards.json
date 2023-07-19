@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Primi Passi",
+        "description": "Aggiungi il tuo primo progetto.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 1,
+        "image": "figure.walk"
+    },
+    {
+        "name": "Inizio Impeccabile",
+        "description": "Aggiungi 10 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 10,
+        "image": "hand.thumbsup.fill"
+    },
+    {
+        "name": "Vai avanti così!",
+        "description": "Aggiungi 20 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 20,
+        "image": "tray.and.arrow.up.fill"
+    },
+    {
+        "name": "Stai accumulando velocità!",
+        "description": "Aggiungi 50 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 50,
+        "image": "speedometer"
+    },
+    {
+        "name": "Facendo Onde",
+        "description": "Aggiungi 100 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 100,
+        "image": "dot.radiowaves.left.and.right"
+    },
+    {
+        "name": "Alto Esecutore",
+        "description": "Aggiungi 250 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 250,
+        "image": "square.stack.3d.up.fill"
+    },
+    {
+        "name": "Esecutore Stellare",
+        "description": "Aggiungi 500 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 500,
+        "image": "star.circle.fill"
+    },
+    {
+        "name": "Maestro Esecutore",
+        "description": "Aggiungi 1000 progetti.",
+        "color": "Light Blue",
+        "criterion": "items",
+        "value": 1000,
+        "image": "crown.fill"
+    },
+    {
+        "name": "Piccoli passi",
+        "description": "Completa il tuo primo progetto.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 1,
+        "image": "checkmark.shield.fill"
+    },
+    {
+        "name": "Rock n Roll",
+        "description": "Completa 10 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 10,
+        "image": "guitars.fill"
+    },
+    {
+        "name": "20 son tanti",
+        "description": "Completa 20 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 20,
+        "image": "20.square.fill"
+    },
+    {
+        "name": "Centro!",
+        "description": "Completa 50 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 50,
+        "image": "target"
+    },
+    {
+        "name": "Volando in Alto",
+        "description": "Completa 100 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 100,
+        "image": "airplane.circle.fill"
+    },
+    {
+        "name": "Grandissimo!",
+        "description": "Completa 250 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 250,
+        "image": "flame.fill"
+    },
+    {
+        "name": "Completatore Seriale",
+        "description": "Completa 500 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 500,
+        "image": "text.badge.checkmark"
+    },
+    {
+        "name": "Boom!",
+        "description": "Completa 1000 progetti.",
+        "color": "Orange",
+        "criterion": "complete",
+        "value": 1000,
+        "image": "bolt.circle.fill"
+    },
+    {
+        "name": "Primo Messaggio",
+        "description": "Hai inviato il primo messaggio sulla chat (non disponibile al momento).",
+        "color": "Purple",
+        "criterion": "chat",
+        "value": 1,
+        "image": "person.fill"
+    },
+    {
+        "name": "Messaggiatore Seriale",
+        "description": "Hai inviato 10 messaggi sulla chat (non disponibile al momento).",
+        "color": "Purple",
+        "criterion": "chat",
+        "value": 10,
+        "image": "message.fill"
+    },
+    {
+        "name": "Capo Brigata",
+        "description": "Hai inviato 100 messaggi sulla chat (non disponibile al momento).",
+        "color": "Purple",
+        "criterion": "chat",
+        "value": 100,
+        "image": "arrow.up.heart.fill"
+    },
+    {
+        "name": "Migliore Persona al Mondo",
+        "description": "Hai comprato la versione premium.",
+        "color": "Green",
+        "criterion": "unlock",
+        "value": 0,
+        "image": "dollarsign.square.fill"
+    }
+]

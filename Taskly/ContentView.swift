@@ -9,7 +9,7 @@ import CoreSpotlight
 import SwiftUI
 
 struct ContentView: View {
-    @SceneStorage("selectedView") var selectedView: String?
+    @AppStorage("selectedView") var selectedView: String?
     @EnvironmentObject var dataController: DataController
 
     var body: some View {

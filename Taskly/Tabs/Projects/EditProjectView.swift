@@ -47,7 +47,9 @@ struct EditProjectView: View {
         Form {
             Section(header: Text("Basic settings")) {
                 TextField("Project name", text: $title.onChange(update))
-                TextField("Description of this project", text: $detail.onChange(update))
+                TextEditor(text: $detail.onChange(update))
+                    .frame(minHeight: 60, alignment: .topLeading)
+                    .multilineTextAlignment(.leading)
             }
 
             Section(header: Text("Custom project color")) {
@@ -101,6 +103,7 @@ struct EditProjectView: View {
                   primaryButton: .default(Text("Delete"), action: delete),
                   secondaryButton: .cancel())
         }
+        .environmentObject(dataController)
     }
 
     func update() {
@@ -167,8 +170,11 @@ struct EditProjectView: View {
     }
 }
 
+#if DEBUG
 struct EditProjectView_Previews: PreviewProvider {
     static var previews: some View {
         EditProjectView(project: Project.example)
+            .environmentObject(DataController())
     }
 }
+#endif

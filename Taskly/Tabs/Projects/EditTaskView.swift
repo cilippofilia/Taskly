@@ -30,7 +30,19 @@ struct EditTaskView: View {
         Form {
             Section(header: Text("Basic settings")) {
                 TextField("Task name", text: $title.onChange(update))
-                TextField("Description", text: $detail.onChange(update))
+                ZStack {
+                    TextEditor(text: $detail.onChange(update))
+                        .frame(minHeight: 60, alignment: .topLeading)
+                        .multilineTextAlignment(.leading)
+
+                    Text("Enter the description of the task")
+                        .foregroundColor(.secondary)
+                        .opacity(detail.isEmpty ? 1 : 0)
+                }
+
+            }
+
+            Section(header: Text("Description")) {
             }
 
             Section(header: Text("Priority")) {
@@ -39,7 +51,6 @@ struct EditTaskView: View {
                     Text("Medium").tag(2)
                     Text("High").tag(3)
                 }
-                .pickerStyle(SegmentedPickerStyle())
             }
 
             Section {

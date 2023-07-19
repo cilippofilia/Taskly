@@ -15,7 +15,7 @@ struct AwardsView: View {
     @State private var showingAwardDetails = false
 
     var columns: [GridItem] {
-        [GridItem(.adaptive(minimum: 100, maximum: 100))]
+        [GridItem(.adaptive(minimum: 80, maximum: 80))]
     }
 
     var body: some View {
@@ -31,7 +31,7 @@ struct AwardsView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .padding()
-                                .frame(width: 100, height: 100)
+                                .frame(width: 80, height: 80)
                                 .foregroundColor(color(for: award))
                         }
                         .accessibilityLabel(label(for: award))

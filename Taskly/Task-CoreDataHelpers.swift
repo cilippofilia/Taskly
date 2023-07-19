@@ -30,7 +30,7 @@ extension Task {
 
         let task = Task(context: viewContext)
         task.title = "Example task"
-        task.detail = "This is an example task"
+        task.detail = ""
         task.priority = 3
         task.creationDate = Date()
 
