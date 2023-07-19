@@ -1,5 +1,5 @@
 
-![Logo](Taskly/Assets.xcassets/taskly-icon.imageset/taskly-icon.png)
+![Logo](Taskly/Assets.xcassets/taskly-icon.imageset/Taskly-banner.png)
 
 # Taskly - Organize your tasks easly
 
